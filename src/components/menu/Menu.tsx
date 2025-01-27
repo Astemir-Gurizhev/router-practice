@@ -1,11 +1,13 @@
-import { Link } from 'react-router'
+import { NavLink } from 'react-router'
 import styles from './Menu.module.css'
 const Menu = () => {
 	return (
 		<nav className={styles.nav}>
-			<Link to='/'>Home</Link>
-			<Link to='/about'>About</Link>
-			<Link to='/contacts'>Contacts</Link>
+			<NavLink to='/' end>
+				Home
+			</NavLink>
+			<NavLink to='/about'>About</NavLink>
+			<NavLink to='/contacts'>Contacts</NavLink>
 		</nav>
 	)
 }

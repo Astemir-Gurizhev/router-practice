@@ -15,11 +15,12 @@
 
 a {
 	font-weight: 500;
-	color: #646cff;
+	color: #fff;
 	text-decoration: inherit;
 }
-
-
+.active {
+	color: red ; 
+}
 body {
 	margin: 0;
 	display: flex;
