@@ -11,7 +11,7 @@ const SingleCourse = () => {
 		if (!course) {
 			navigate('..', { relative: 'path' })
 		}
-	}, [course])
+	}, [course, navigate])
 	return (
 		<>
 			<h1>{course?.title}</h1>
