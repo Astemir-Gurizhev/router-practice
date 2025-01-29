@@ -3,7 +3,6 @@
 <ul>
   <li>Навигация в React-Router</li>
   <li>Использование хуков в React-Router</li>
-  <li>Context API</li>
 </ul>
 
 <h3> Все основная информация по навигации находится в файле App.tsx  </h3>
