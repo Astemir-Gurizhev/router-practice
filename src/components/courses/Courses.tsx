@@ -1,12 +1,14 @@
 import queryString from 'query-string'
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router'
+import { useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router'
 import courses from '../../data/courses'
 import styles from './Courses.module.css'
 
+const SORT_KEYS = ['title', 'slug', 'id']
+
 const sortCourses = (courses, key) => {
 	const sortCourses = [...courses]
-	if (!key) {
+	if (!key || !SORT_KEYS.includes(key)) {
 		return sortCourses
 	}
 	sortCourses.sort((a, b) => (a[key] > b[key] ? 1 : -1))
@@ -16,11 +18,19 @@ const sortCourses = (courses, key) => {
 const Courses = () => {
 	const location = useLocation()
 	const query = queryString.parse(location.search)
+	const navigate = useNavigate()
 	const [sortKey, setSortKey] = useState(query.sort)
 
 	const [sortedCourses, setSortedCourses] = useState(
 		sortCourses(courses, sortKey)
 	)
+
+	useEffect(() => {
+		if(!SORT_KEYS.includes(sortKey)) {
+			navigate('.')
+			setSortKey(null)
+		}
+	}, [sortKey, navigate])
 
 	return (
 		<>
