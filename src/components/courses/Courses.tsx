@@ -6,6 +6,9 @@ import styles from './Courses.module.css'
 
 const sortCourses = (courses, key) => {
 	const sortCourses = [...courses]
+	if (!key) {
+		return sortCourses
+	}
 	sortCourses.sort((a, b) => (a[key] > b[key] ? 1 : -1))
 	return sortCourses
 }
@@ -21,7 +24,7 @@ const Courses = () => {
 
 	return (
 		<>
-			<h1>Courses</h1>
+			<h1>{sortKey ? `Courses sorted by ${sortKey}` : 'Courses'}</h1>
 			{sortedCourses.map(course => (
 				<div className={styles.course} key={course.id}>
 					<Link to={course.slug}>{course.title}</Link>
